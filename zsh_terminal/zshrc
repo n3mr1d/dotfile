@@ -1,3 +1,20 @@
+[[ $- != *i* ]] && return
+
+# Konfigurasi editor dan environment
+export VISUAL="${EDITOR}"
+export EDITOR='cursor'
+export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd)"
+export SUDO_PROMPT=$'\e[1;31m[ root access for %u]\e[0m Password: '
+export BAT_THEME="Monokai Extended Bright"
+
+# Menambahkan local bin ke PATH
+if [ -d "$HOME/.local/bin" ] ;
+  then PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Inisialisasi completion system
+autoload -Uz compinit
+zmodload zsh/complist
 
 # Mengoptimalkan waktu loading completion dan memastikan cache completion dibuat
 if [[ -n ${HOME}/.config/zsh/zcompdump(#qN.mh+24) ]]; then
@@ -71,36 +88,14 @@ function dir_icon {
   fi
 }
 
-# Fungsi untuk ikon OS di prompt
-function os_icon {
-  case "$(uname -s)" in
-    Linux*)
-      if [[ -f /etc/arch-release ]]; then
-        echo "%B%F{blue}%f%b"  # Arch Linux
-      elif [[ -f /etc/debian_version ]]; then
-        echo "%B%F{red}%f%b"  # Debian
-      else
-        echo "%B%F{green}%f%b"  # Generic Linux
-      fi
-      ;;
-    Darwin*)
-      echo "%B%F{white}%f%b"  # macOS
-      ;;
-    *)
-      echo "%B%F{yellow}%f%b"  # Unknown OS
-      ;;
-  esac
-}
-
-# Prompt yang lebih keren dengan ikon OS
-PS1='$(os_icon)  %B%F{magenta}%n%f%b $(dir_icon)  %B%F{red}%~%f%b${vcs_info_msg_0_} %(?.%B%F{green}󰄬 >.%F{red}󰅙 >)%f%b '
+# Prompt yang lebih keren dengan ikon
+PS1='%B%F{blue}󰣇%f%b  %B%F{magenta}%n%f%b $(dir_icon)  %B%F{red}%~%f%b${vcs_info_msg_0_} %(?.%B%F{green}󰄬 >.%F{red}󰅙 >)%f%b '
 
 # Handler untuk perintah tidak ditemukan
 command_not_found_handler() {
-    printf "%s%s? WTF brou? Coba cek lagi ketikannya!\n" "$acc" "$0" >&2
+    printf "Command : \e[31m%s \e[0m Not Found!\n" "$0" >&2
     return 127
 }
-
 # Plugin ZSH
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
@@ -149,4 +144,5 @@ ZSH_HIGHLIGHT_STYLES[command-substitution]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=yellow,bold'
 export PATH="$HOME/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
-export PATH="$PATH:$HOME/.local/bin"
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin
