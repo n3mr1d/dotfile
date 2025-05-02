@@ -25,4 +25,15 @@ This configuration requires several tools and plugins to function properly. Belo
 | **File Viewer**      | `bat`                                     | Better version of `cat` with syntax highlighting                        |
 | **File Listing**     | `eza` *(or `exa`, depending on distro)*   | Modern replacement for `ls` with icons                                   |
 | **Music Player UI**  | `ncmpcpp`                                 | TUI client for MPD (Music Player Daemon)                                 |
-| **Package Manager**  | `paru` *(or other AUR helper)*
+| **Kitty** | Terminal Recomendation | Moderen themes
+
+### kitty
+kitty package [kitty](https://github.com/kovidgoyal/kitty)
+<details>
+
+Kitty themes full sample
+![Kitty Full](/zsh_terminal/image/kittyfull.png)
+
+`bash
+sudo pacman -S kitty 
+`
