@@ -25,15 +25,23 @@ This configuration requires several tools and plugins to function properly. Belo
 | **File Viewer**      | `bat`                                     | Better version of `cat` with syntax highlighting                        |
 | **File Listing**     | `eza` *(or `exa`, depending on distro)*   | Modern replacement for `ls` with icons                                   |
 | **Music Player UI**  | `ncmpcpp`                                 | TUI client for MPD (Music Player Daemon)                                 |
-| **Kitty** | Terminal Recomendation | Moderen themes
+| **Kitty** | Terminal Recomendation | Modern themes
 
 ### kitty
 kitty package [kitty](https://github.com/kovidgoyal/kitty)
 <details>
 
-Kitty themes full sample
+Kitty themes full sample with my config
 ![Kitty Full](/zsh_terminal/image/kittyfull.png)
+![kitty file](/zsh_terminal/image/batformat.png)
+![kitty wrong](/zsh_terminal/image/wrongcommand.png)
+![kitty password](/zsh_terminal/image/rootacces.png)
+![kitty ls](/zsh_terminal/image/ezathemes2.png)
+![kitty icon](/zsh_terminal/image/ezathemes.png)
+![kitty progresbarr](/zsh_terminal/image/progresbar.png)
+**install on pacman**
 
 `bash
 sudo pacman -S kitty 
 `
+
