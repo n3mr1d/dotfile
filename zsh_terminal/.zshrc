@@ -97,9 +97,15 @@ command_not_found_handler() {
 
   pkgs=(${(f)"$(pkgfile -b -v -- "$cmd" 2>/dev/null)"})
   if [[ -n "$pkgs" ]]; then
-    printf '\033[1;32m%s\033[0m may be found in the following packages:\n' "$cmd"
+    # Menampilkan pesan error dengan warna
+    printf '\033[1;31mzsh:\033[0m \033[1;33mcommand\033[0m %s  \033[1;31mnot found\n' "$cmd"
+
+    # Saran paket yang mungkin dimaksud
+    printf 'Maybe you meant:\n'
+    printf '  \033[1;32m%s\033[0m is provided by:\n' "$cmd"
+
     for pkg in $pkgs; do
-      printf '  \033[1;36m%s\033[0m\n' "$pkg"
+      printf '    \033[1;36m%s\033[0m\n' "$pkg"
     done
   else
     printf '\033[1;31mzsh: command not found:\033[0m %s\n' "$cmd"
