@@ -14,3 +14,4 @@ fi
 cp "$HOME/.zshrc" "$HOME/backup/.zshrc.backup.$(date +%Y%m%d%H%M%S)"
 echo "✅ File .zshrc passed backup to ~/backup"
 cat ./zshrc > $HOME/.zshrc
+echo "instalation succes !!"

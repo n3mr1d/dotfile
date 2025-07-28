@@ -44,4 +44,3 @@ Kitty themes full sample with my config
 `bash
 sudo pacman -S kitty 
 `
-

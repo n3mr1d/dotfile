@@ -84,7 +84,7 @@ function dir_icon {
   if [[ "$PWD" == "$HOME" ]]; then
     echo "%B%F{cyan}󰋜%f%b"
   else
-    echo "%B%F{cyan}%f%b"
+       echo "%B%F{cyan}%f%b"
   fi
 }
 
@@ -134,6 +134,7 @@ alias grep='grep --color=auto'
 alias ip='ip -color=auto'
 alias diff='diff --color=auto'
 alias cats='/sbin/cat'
+alias server='sudo systemctl start nginx && systemctl start php-fpm && systemctl start mariadb'
 # Konfigurasi syntax highlighting
 ZSH_HIGHLIGHT_STYLES[path]='fg=blue,bold'
 ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
