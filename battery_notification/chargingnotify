@@ -12,54 +12,54 @@ if [ $BATTERY_CHARGING -eq 1 ]; then
     # Putar suara plug
 
     if [ "$BATTERY_LEVEL" -le 10 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-0-charging-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-0-charging-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 20 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-20-charging-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-20-charging-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 30 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-30-charging-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-30-charging-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 40 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-40-charging-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-40-charging-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 50 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-50-charging-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-50-charging-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 60 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-60-charging-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-60-charging-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 70 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-70-charging-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-70-charging-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 80 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-80-charging-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-80-charging-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 90 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-90-charging-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-90-charging-symbolic.svg"
     else
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-100-charged-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-100-charged-symbolic.svg"
     fi
     notify-send "Charging" "${BATTERY_LEVEL}% of battery charged." -u low -i "$ICON" -t 5000 -r 9991
-    /usr/bin/sudo -u whoami /usr/bin/paplay --server=/run/user/1001/pulse/native /home/whoami/Music/apple.wav > /dev/null 2>&1 
+    /usr/bin/sudo -u whoami /usr/bin/paplay --server=/run/user/1001/pulse/native /home/whoami/Music/apple.wav > /dev/null 2>&1
 
 else
     # Putar suara unplug
-    
+
     if [ "$BATTERY_LEVEL" -le 10 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-0-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-0-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 20 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-20-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-20-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 30 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-30-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-30-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 40 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-40-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-40-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 50 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-50-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-50-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 60 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-60-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-60-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 70 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-70-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-70-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 80 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-80-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-80-symbolic.svg"
     elif [ "$BATTERY_LEVEL" -le 90 ]; then
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-90-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-90-symbolic.svg"
     else
-        ICON="/usr/share/icons/blackarch-icons/status/symbolic/battery-level-100-symbolic.svg"
+        ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-100-symbolic.svg"
     fi
     notify-send "Discharging" "${BATTERY_LEVEL}% of battery remaining." -u low -i "$ICON" -t 5000 -r 9991
-   /usr/bin/sudo -u whoami /usr/bin/paplay --server=/run/user/1001/pulse/native /home/whoami/Music/apple.wav > /dev/null 2>&1 
-    
+   /usr/bin/sudo -u whoami /usr/bin/paplay --server=/run/user/1001/pulse/native /home/whoami/Music/apple.wav > /dev/null 2>&1
+
 fi
