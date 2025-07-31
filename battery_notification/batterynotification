@@ -12,7 +12,7 @@ BATTERY_DISCHARGING=$(acpi -b | grep "Battery 0" | grep -c "Discharging")
 BATTERY_LEVEL=$(acpi -b | grep "Battery 0" | grep -P -o '[0-9]+(?=%)')
 EMPTY_FILE="/tmp/batteryempty"
 FULL_FILE="/tmp/batteryfull"
-SHUTDOWN_LEVEL=5
+SHUTDOWN_LEVEL=10
 CRITICAL_FILE="/tmp/batterycritical"
 
 if [ $BATTERY_DISCHARGING -eq 1 ] && [ -f "$FULL_FILE" ]; then
@@ -22,22 +22,21 @@ elif [ $BATTERY_DISCHARGING -eq 0 ] && [ -f "$EMPTY_FILE" ]; then
 fi
 # Logika notifikasi yang lebih kompleks
 if [ $BATTERY_LEVEL -ge $MAX_LEVEL ] && [ $BATTERY_DISCHARGING -eq 0 ] && [ ! -f "$FULL_FILE" ]; then
-    notify-send "Battery Fully Charged" "Battery has been charged to $BATTERY_LEVEL%. Please unplug the charger." -i "/usr/share/icons/blackarch-icons/panel/22/battery-full-charging-symbolic.svg" -u "normal" -r 9991
+    notify-send "Battery Fully Charged" "Battery has been charged to $BATTERY_LEVEL%. Please unplug the charger." -i "/usr/share/icons/WhiteSur-dark/panel/22/battery-full-charging-symbolic.svg" -u "normal" -r 9991
     touch "$FULL_FILE"
 elif [ $BATTERY_LEVEL -le $CRITICAL_LEVEL ] && [ $BATTERY_DISCHARGING -eq 1 ] && [ ! -f "$CRITICAL_FILE" ]; then
-    notify-send "Critical Battery!" "Only $BATTERY_LEVEL% remaining! Connect to power source immediately!" -i "/usr/share/icons/blackarch-icons/status/symbolic/battery-empty-symbolic.svg" -u "critical" -r 9991
+    notify-send "Critical Battery!" "Only $BATTERY_LEVEL% remaining! Connect to power source immediately!" -i "/usr/share/icons/WhiteSur-dark/status/symbolic/battery-empty-symbolic.svg" -u "critical" -r 9991
     touch "$CRITICAL_FILE"
     # Memutar suara peringatan untuk baterai kritis
-    /usr/bin/sudo -u whoami /usr/bin/paplay --server=/run/user/1001/pulse/native /home/whoami/Music/low_bat.wav > /dev/null 2>&1
+    /usr/bin/sudo -u whoami /usr/bin/paplay --server=/run/user/1001/pulse/native ~/Project/github/dotfile/battery_notification/lowbat.mp3 > /dev/null 2>&1
 elif [ $BATTERY_LEVEL -le $WARNING_LEVEL ] && [ $BATTERY_DISCHARGING -eq 1 ] && [ ! -f "$EMPTY_FILE" ]; then
-    notify-send "Low Battery" "$BATTERY_LEVEL% remaining. Please connect to power source." -i "/usr/share/icons/blackarch-icons/status/symbolic/battery-low-symbolic.svg" -u "normal" -r 9991   
+    notify-send "Low Battery" "$BATTERY_LEVEL% remaining. Please connect to power source." -i "/usr/share/icons/WhiteSur-dark/status/symbolic/battery-low-symbolic.svg" -u "normal" -r 9991
     touch "$EMPTY_FILE"
 elif [ $BATTERY_LEVEL -gt $WARNING_LEVEL ] && [ -f "$EMPTY_FILE" ]; then
     rm "$EMPTY_FILE" "$CRITICAL_FILE"
 elif [ $BATTERY_LEVEL -le $SHUTDOWN_LEVEL ] && [ $BATTERY_DISCHARGING -eq 1 ]; then
-    # Menampilkan notifikasi shutdown dan memainkan suara peringatan
-    notify-send "Critical Battery Warning!" "System will shutdown in 1 minute due to critically low battery ($BATTERY_LEVEL%)" -i "/usr/share/icons/blackarch-icons/status/symbolic/battery-empty-symbolic.svg" -u "critical" -r 9992
-    /usr/bin/sudo -u whoami /usr/bin/paplay --server=/run/user/1001/pulse/native /home/whoami/Music/shutdown.wav > /dev/null 2>&1
+    notify-send "Critical Battery Warning!" "System will shutdown in 1 minute due to critically low battery ($BATTERY_LEVEL%)" -i "/usr/share/icons/WhiteSur-dark/status/symbolic/battery-empty-symbolic.svg" -u "critical" -r 9992
+	/usr/bin/paplay --server=/run/user/1001/pulse/native ~/Project/github/dotfile/battery_notification/lowbat.mp3 > /dev/null 2>&1
     sleep 1m
-    /usr/bin/systemctl poweroff
+    /usr/bin/shutdown +1
 fi

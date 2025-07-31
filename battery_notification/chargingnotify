@@ -33,7 +33,7 @@ if [ $BATTERY_CHARGING -eq 1 ]; then
         ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-100-charged-symbolic.svg"
     fi
     notify-send "Charging" "${BATTERY_LEVEL}% of battery charged." -u low -i "$ICON" -t 5000 -r 9991
-    /usr/bin/sudo -u whoami /usr/bin/paplay --server=/run/user/1001/pulse/native /home/whoami/Music/apple.wav > /dev/null 2>&1
+    /usr/bin/paplay --server=/run/user/1001/pulse/native /home/idrift/Project/github/dotfile/battery_notification/plug.mp3 > /dev/null 2>&1
 
 else
     # Putar suara unplug
@@ -60,6 +60,6 @@ else
         ICON="/usr/share/icons/WhiteSur-dark/status/symbolic/battery-level-100-symbolic.svg"
     fi
     notify-send "Discharging" "${BATTERY_LEVEL}% of battery remaining." -u low -i "$ICON" -t 5000 -r 9991
-   /usr/bin/sudo -u whoami /usr/bin/paplay --server=/run/user/1001/pulse/native /home/whoami/Music/apple.wav > /dev/null 2>&1
+   /usr/bin/paplay --server=/run/user/1001/pulse/native  /home/idrift/Project/github/dotfile/battery_notification/unplug.mp3 > /dev/null 2>&1
 
 fi
