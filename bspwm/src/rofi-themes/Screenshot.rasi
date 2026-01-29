@@ -1,9 +1,10 @@
 // # z0mbi3 - https://github.com/gh0stzk/dotfiles
 
 configuration {
-	hover-select:				true;
-	me-select-entry:			"";
-	me-accept-entry:			"MousePrimary";
+    hover-select:               true;
+    me-select-entry:            "";
+    me-accept-entry:            "MousePrimary";
+    show-icons:                 false;  // TAMBAHKAN INI - matikan icon
 }
 
 @import "shared.rasi"
@@ -50,7 +51,7 @@ textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
     font:                        "JetbrainsMono NF Bold 10";
-    str:                         "";
+    str:                         "";
     padding:                     10px 17px 10px 12px;
     border-radius:               0px;
     background-color:            @active;
@@ -98,13 +99,20 @@ listview {
 
 element {
     enabled:                     true;
-    padding:                     22px 22px 22px 10px;
+    padding:                     22px 10px;  // UBAH dari 22px 22px 22px 10px
     border:                      0px solid;
     border-radius:               0px;
     border-color:                @selected;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
+}
+
+// TAMBAHKAN INI - Nonaktifkan element-icon
+element-icon {
+    enabled:                     false;
+    size:                        0px;
+    background-color:            transparent;
 }
 
 element-text {
