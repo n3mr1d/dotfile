@@ -13,7 +13,7 @@ s_select=""
 s_active=""
 s_in3="󰔝"
 s_in10="󰔜"
-s_in40 = "29"
+s_in40="29"
 
 rofi_cmd() {
 	rofi -dmenu \
